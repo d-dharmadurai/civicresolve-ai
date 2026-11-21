@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #060b19;
+    color: #f1f5f9;
+    color-scheme: dark;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  select option {
+    background-color: #060b19;
+    color: #f1f5f9;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes toast-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes aurora-mesh-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes aurora-orb-float-a {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(6vw, 4vh, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-4vw, 7vh, 0) scale(0.96);
+  }
+}
+
+@keyframes aurora-orb-float-b {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40% {
+    transform: translate3d(-7vw, -5vh, 0) scale(1.1);
+  }
+  75% {
+    transform: translate3d(4vw, -3vh, 0) scale(0.95);
+  }
+}
+
+@keyframes aurora-orb-float-c {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(5vw, -6vh, 0) scale(1.06);
+  }
+}
+
+.animate-toast-in {
+  animation: toast-slide-up 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.aurora-base-gradient {
+  background: linear-gradient(
+    130deg,
+    #060b19 0%,
+    #0f294a 28%,
+    #1e1b4b 56%,
+    #0a1d37 82%,
+    #060b19 100%
+  );
+  background-size: 240% 240%;
+  animation: aurora-mesh-shift 28s ease-in-out infinite;
+}
+
+.aurora-orb-indigo,
+.aurora-orb-blue-teal,
+.aurora-orb-amber {
+  will-change: transform;
+}
+
+.aurora-orb-indigo {
+  animation: aurora-orb-float-a 24s ease-in-out infinite;
+}
+
+.aurora-orb-blue-teal {
+  animation: aurora-orb-float-b 30s ease-in-out infinite;
+}
+
+.aurora-orb-amber {
+  animation: aurora-orb-float-c 34s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-toast-in,
+  .aurora-base-gradient,
+  .aurora-orb-indigo,
+  .aurora-orb-blue-teal,
+  .aurora-orb-amber {
+    animation: none;
+  }
+}
